@@ -18,8 +18,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - run: pwd
+      - run: ls -la
       - run: npm install
       - run: npm run build
+      - run: ls -la dist || echo "dist not found"
 
       - name: Copy to server
         uses: appleboy/scp-action@v0.1.4
