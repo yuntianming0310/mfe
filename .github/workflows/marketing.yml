@@ -1,15 +1,15 @@
-name: deploy-container
+name: deploy-marketing
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'package/container/**'
+      - 'package/marketing/**'
 
 defaults:
   run:
-    working-directory: package/container
+    working-directory: package/marketing
 
 jobs:
   build:
@@ -20,8 +20,6 @@ jobs:
 
       - run: npm install
       - run: npm run build
-        env:
-          PRODUCTION_DOMAIN: http://74.48.65.188
 
       - name: Copy to server
         uses: appleboy/scp-action@v0.1.4
@@ -29,6 +27,6 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          source: 'package/container/dist/*'
-          target: '/var/www/mfe/container'
+          source: 'package/marketing/dist/*'
+          target: '/var/www/mfe/marketing'
           strip_components: 3
