@@ -5,7 +5,7 @@ import MarketingApp from './components/MarketingApp'
 export default function App() {
   return (
     <div>
-      <h1>Hi, there!</h1>
+      <h1>Hello World!</h1>
       <br />
       <MarketingApp />
     </div>
