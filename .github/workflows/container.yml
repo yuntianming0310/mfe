@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'packages/container/**'
 
 defaults:
   run:
@@ -17,10 +15,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - run: npm install
       - run: npm run build
-
       - name: Copy to server
         uses: appleboy/scp-action@v0.1.4
         with:
