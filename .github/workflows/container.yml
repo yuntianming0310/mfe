@@ -29,3 +29,4 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: 'package/container/dist/*'
           target: '/var/www/mfe/container'
+          strip_components: 3
