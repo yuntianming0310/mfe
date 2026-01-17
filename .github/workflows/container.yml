@@ -21,7 +21,7 @@ jobs:
       - run: npm install
       - run: npm run build
         env:
-          PRODUCTION_DOMAIN: http://74.48.65.188
+          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
 
       - name: Copy to server
         uses: appleboy/scp-action@v0.1.4
