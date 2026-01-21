@@ -1,0 +1,32 @@
+name: deploy-auth
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'package/auth/**'
+
+defaults:
+  run:
+    working-directory: package/auth
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: npm install
+      - run: npm run build
+
+      - name: Copy to server
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: 'package/auth/dist/*'
+          target: '/var/www/mfe/auth'
+          strip_components: 3
