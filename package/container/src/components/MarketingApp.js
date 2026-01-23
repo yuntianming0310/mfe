@@ -9,6 +9,7 @@ export default function MarketingApp() {
 
   useEffect(() => {
     const { onParentNavigate } = mount(ref.current, {
+      initialPath: reactRouterHistory.location.pathname,
       onNavigate: ({ pathname: nextPathname }) => {
         const { pathname } = reactRouterHistory.location
 
