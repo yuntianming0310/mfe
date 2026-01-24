@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 
 import { mount } from 'auth/AuthApp'
 
-export default function AuthApp() {
+export default function AuthApp({ onSignIn }) {
   const ref = useRef(null)
   const reactRouterHistory = useHistory()
 
@@ -17,6 +17,7 @@ export default function AuthApp() {
           reactRouterHistory.push(nextPathname)
         }
       },
+      onSignIn,
     })
 
     reactRouterHistory.listen(onParentNavigate)
